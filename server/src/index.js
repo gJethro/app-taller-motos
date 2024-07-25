@@ -1,5 +1,9 @@
-import app from './app'
+import app from './app/app'
+import testConnection from './config/conn.test'
 const port = 3000
+
+testConnection()
+
 app.listen(port, () => {
-  console.log(`working server. listening on port ${port}`)
+  console.log(`Server running on http://localhost:${port}`)
 })
