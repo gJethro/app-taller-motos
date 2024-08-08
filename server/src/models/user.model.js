@@ -139,7 +139,6 @@ User.init(
     createdAt: 'creado',
     updatedAt: 'actualizado',
     hooks: {
-      //Hasheando la contraseña
       beforeCreate: (user) =>
         hashPassword(user.password)
           .then((success) => {
@@ -148,7 +147,6 @@ User.init(
           .catch((err) => {
             if (err) console.log(err)
           }),
-      // Antes de validar el email, se pasa a minúsculas
       beforeValidate: (user) => {
         if (typeof user.email === 'string')
           user.email = user.email.toLowerCase()

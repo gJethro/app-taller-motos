@@ -1,6 +1,5 @@
 import DocType from '../models/doc-types.model'
 
-// Obtener todos los tipos de documento de la DB
 export const getDocTypes = async (_req, res) => {
   try {
     const docTypes = await DocType.findAll()
@@ -26,7 +25,6 @@ export const getDocTypes = async (_req, res) => {
   }
 }
 
-// Obtener un tipo de documento por ID
 export const getDocType = async (req, res) => {
   try {
     const id = req.params.id
@@ -44,7 +42,6 @@ export const getDocType = async (req, res) => {
   }
 }
 
-// Crear un tipo de documento
 export const createDocType = async (req, res) => {
   try {
     const { id, docName, abbreviation } = req.body
@@ -63,7 +60,6 @@ export const createDocType = async (req, res) => {
   }
 }
 
-// Actualizar un tipo de documento por ID
 export const updateDocType = async (req, res) => {
   try {
     const docId = req.params.id
@@ -111,7 +107,6 @@ export const updateDocType = async (req, res) => {
   }
 }
 
-// Borrar un tipo de documento por ID
 export const deleteDocType = async (req, res) => {
   try {
     const docId = req.params.id
@@ -120,7 +115,7 @@ export const deleteDocType = async (req, res) => {
         .status(204)
         .json({ message: `No se encontró un documento con el ID ${docId}` })
 
-    const deletedDoc = await DocType.destroy({ where: { id: docId } })
+    await DocType.destroy({ where: { id: docId } })
   } catch (error) {
     console.log(error.message)
     res
